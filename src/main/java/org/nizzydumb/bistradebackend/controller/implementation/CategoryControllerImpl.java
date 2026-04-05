@@ -20,6 +20,13 @@ public class CategoryControllerImpl implements CategoryController {
     private final CategoryRepository categoryRepository;
 
     @Override
+    public ResponseEntity<CategoryResponse> getById(Long id) {
+        Category category = categoryRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found"));
+        return new ResponseEntity<>(CategoryResponse.convertFromCategory(category), HttpStatus.OK);
+    }
+
+    @Override
     public ResponseEntity<List<CategoryResponse>> getAll() {
         return ResponseEntity.ok(categoryRepository.findAll().stream().map(CategoryResponse::convertFromCategory).toList());
     }

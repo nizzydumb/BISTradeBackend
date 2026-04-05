@@ -13,6 +13,9 @@ import java.util.List;
 @Validated
 public interface CategoryController {
 
+    @GetMapping("{id}")
+    ResponseEntity<CategoryResponse> getById(@PathVariable("id") Long id);
+
     @GetMapping("all")
     ResponseEntity<List<CategoryResponse>> getAll();
 
