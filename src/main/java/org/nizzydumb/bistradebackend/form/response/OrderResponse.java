@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.nizzydumb.bistradebackend.model.Order;
 import org.nizzydumb.bistradebackend.model.OrderStatus;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -18,6 +19,7 @@ public class OrderResponse {
     private String surname;
     private String phone;
     private String email;
+    private LocalDateTime createdAt;
     private List<ProductOrderResponse> productOrders;
     private OrderStatus status;
 
@@ -28,6 +30,7 @@ public class OrderResponse {
                 .surname(order.getSurname())
                 .phone(order.getPhone())
                 .email(order.getEmail())
+                .createdAt(order.getCreatedAt())
                 .productOrders(order.getProductOrders().stream().map(ProductOrderResponse::from).toList())
                 .status(order.getStatus())
                 .build();
