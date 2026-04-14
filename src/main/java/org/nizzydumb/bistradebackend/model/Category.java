@@ -12,6 +12,7 @@ import java.util.List;
 public class Category extends BaseEntity {
 
     private String name;
+    @Lob
     private String description;
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;

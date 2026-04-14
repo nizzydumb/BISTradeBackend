@@ -1,9 +1,6 @@
 package org.nizzydumb.bistradebackend.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +12,7 @@ import java.util.List;
 public class Product extends BaseEntity {
 
     private String name;
+    @Lob
     private String description;
     private Double price;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
