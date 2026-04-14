@@ -19,6 +19,8 @@ public class Product extends BaseEntity {
     private Double price;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductAttribute> attributes;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductOrder> orders;
     @ManyToOne(optional = false)
     private Category category;
     private String imageURL;
